@@ -1,0 +1,16 @@
+kind: Pod
+metadata:
+  name: kaniko
+spec:
+  serviceAccount: provisioner
+  serviceAccountName: provisioner
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:v1.6.0-debug
+    imagePullPolicy: Always
+    command:
+    - /busybox/cat
+    tty: true
+    securityContext:
+      runAsUser: 0
+      runAsGroup: 0
